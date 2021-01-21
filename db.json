@@ -1,9 +1,48 @@
 {
   "musers": [
     {
-      "name": "Ivan",
-      "surname": "Vedenov",
-      "id": 1
+      "id": 1,
+      "name": "Александр",
+      "surname": "Цалапов",
+      "patronymic": "Михайлович",
+      "phone": "+7(800)555-3535",
+      "email": "qwerty@mail.ru",
+      "date": "1998-10-21T13:28:06.419Z",
+      "group": 1,
+      "edit": false
+    },
+    {
+      "id": 2,
+      "name": "Александр",
+      "surname": "Петров",
+      "patronymic": "Петрович",
+      "phone": "+7(800)555-3535",
+      "email": "qwerty@mail.ru",
+      "date": "1997-10-21T13:28:06.419Z",
+      "group": 2,
+      "edit": false
+    },
+    {
+      "id": 3,
+      "name": "Айрат",
+      "surname": "Петров",
+      "patronymic": "Петрович",
+      "phone": "+7(800)555-3535",
+      "email": "qwerty@mail.ru",
+      "date": "1996-10-21T13:28:06.419Z",
+      "group": 3,
+      "edit": false
+    },
+    {
+      "id": 4,
+      "name": "Много",
+      "surname": "Деревьев",
+      "patronymic": "Петрович",
+      "phone": "+7(800)333-3333",
+      "email": "qwerty@mail.ru",
+      "date": "1996-10-21T13:28:06.419Z",
+      "group": 3,
+      "edit": false
     }
   ]
 }
