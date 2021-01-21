@@ -14,6 +14,7 @@ import {GroupfilterPipe} from '../../shared/pipes/groupfilter.pipe'
 export class UserListComponent implements OnInit {
 
   users: Muser[] = [];
+  user: Muser;
   group: MyGroups;
   sortType = 'higherId';
   instruments: boolean = false;
@@ -29,15 +30,6 @@ export class UserListComponent implements OnInit {
     this.getData()
   }
 
-  async getData() {
-    try {
-      this.users = await this.muserService.getAll();
-      // this.users = isNullOrUndefined(await users) ? [] : await users;
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
   getAge(date: string) {
     let a = new Date(date);
     let b = new Date();
@@ -45,6 +37,18 @@ export class UserListComponent implements OnInit {
     let age = Math.floor(date_diff / 1000 / 60 / 60 / 24 / 365);
     return age;
   }
+
+  async getData() {
+    try {
+      // this.getAge(this.user.date);
+      this.users = await this.muserService.getAll();
+      // this.users = isNullOrUndefined(await users) ? [] : await users;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  
 
   deleteOneUser(id: number) {
     this.onDeleteUser(id);
@@ -78,6 +82,7 @@ export class UserListComponent implements OnInit {
       console.log(error);
     }
   }
+
 
   async onDeleteUser(id: number) {
     try {

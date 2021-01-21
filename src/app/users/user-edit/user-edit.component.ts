@@ -2,7 +2,7 @@ import { isNull } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Muser } from 'src/app/shared/models/muser.model';
+import { Muser, MyGroups } from 'src/app/shared/models/muser.model';
 import { MuserService } from 'src/app/shared/services/muser.service';
 import { isNullOrUndefined } from 'util';
 
@@ -13,9 +13,12 @@ import { isNullOrUndefined } from 'util';
 })
 export class UserEditComponent implements OnInit {
 
+  users: Muser[] = [];
   id: number;
   user: Muser;
   userForm: FormGroup;
+  group: MyGroups;
+
 
   constructor(private activatedRoute: ActivatedRoute, private muserService: MuserService, private router: Router) { 
     this.activatedRoute.params.subscribe(params => {
@@ -31,6 +34,11 @@ export class UserEditComponent implements OnInit {
     this.userForm = new FormGroup({
       name: new FormControl(null, [Validators.required]),
       surname: new FormControl(null, [Validators.required]),
+      patronymic: new FormControl(null, [Validators.required]),
+      phone: new FormControl(null, [Validators.required]),
+      email: new FormControl(null, [Validators.required]),
+      group: new FormControl({value: 1}, [Validators.required]),
+      date: new FormControl(null, [Validators.required]),
     })
     this.getData();
   }
@@ -46,6 +54,11 @@ export class UserEditComponent implements OnInit {
       this.userForm.patchValue({
         name: this.user.name,
         surname: this.user.surname,
+        patronymic: this.user.patronymic,
+        phone: this.user.phone,
+        email: this.user.email,
+        group: this.group,
+        date: this.user.date
       })
     }
   }

@@ -6,6 +6,7 @@ export interface Muser {
     email: string;
     group: number;
     edit: boolean;
+    date: any;
     id?: number;
 }
 
@@ -13,5 +14,5 @@ export enum MyGroups {
     it,
     sale,
     delivery,
-    legal,
+    legal
   }

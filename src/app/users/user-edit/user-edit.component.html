@@ -8,6 +8,30 @@
             <label for="usersurname">Фамилия</label>
             <input type="text" id="usersurname" class="form-control" formControlName="surname" />
         </div>
+        <div class="form-group">
+            <label for="patronymic">Отчество</label>
+            <input type="text" id="patronymic" class="form-control" formControlName="patronymic" />
+        </div>
+        <div class="form-group">
+            <label for="phone">Телефон</label>
+            <input type="text" id="phone" class="form-control" formControlName="phone" />
+        </div>
+        <div class="form-group">
+            <label for="email">Почта</label>
+            <input type="email" id="email" class="form-control" formControlName="email" />
+        </div>
+        <div class="form-group">
+            <label for="date">Возраст</label>
+            <input type="date" id="date" class="form-control" formControlName="date" />
+        </div>
+        <div class="form-group">
+            <select class="custom-select" formControlName="group">  
+                <option [ngValue]="1">IT отдел</option>
+                <option [ngValue]="2">Отдел продаж</option>
+                <option [ngValue]="3">Отдел доставки</option>
+                <option [ngValue]="4">Юридический отдел</option>
+            </select>
+        </div>
         <button class="btn btn-primary mr-4" [disabled]="userForm.invalid" (click)="onSave()">Сохранить</button>
         <button class="btn btn-danger" *ngIf="id != null" (click)="onDelete()">Удалить</button>
     </form>
