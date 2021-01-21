@@ -1,8 +1,37 @@
-<div class="container-fluid" *ngFor="let user of users">
-    <h1 *ngIf="user.group == 1">IT отдел</h1>
+<div class="container-fluid" >
+    <!-- <h1 *ngIf="user.group == 1">IT отдел</h1>
     <h1 *ngIf="user.group == 2">Отдел продаж</h1>
     <h1 *ngIf="user.group == 3">Отдел доставки</h1>
-    <h1 *ngIf="user.group == 4">Юридический отдел</h1>
+    <h1 *ngIf="user.group == 4">Юридический отдел</h1> -->
+    <div class="col-4">
+      <h4>Поиск по имени и фамилии</h4>
+      <input type="text" class="form-control" placeholder="Имя Фамилия" [(ngModel)]="searchStr" />
+    </div>
+    <div class="instruments col-4">
+      <span class="selection">Сортировать по:</span>
+      <form [formGroup]='sortForm'>
+          <select formControlName="sortType" class="custom-select" (click)="currentInstrument() ">
+      <option [ngValue]='"higherId"'>
+       возрастанию id
+      </option>
+      <option [ngValue]='"lowerId"'>
+       убыванию id
+      </option>
+      <option [ngValue]='"higherAge"'>
+       возрастанию возраста
+      </option>
+      <option [ngValue]='"lowerAge"'>
+       убыванию возраста
+      </option>
+    </select>
+      </form>
+  </div>
+  <div class="filter" *ngIf="!instruments">
+      <div class="col-12 mt-5">
+          <span>Фильтр по имени или фамилии</span>
+      </div>
+      
+  </div>
     <table class="table mt-2">
         <thead>
           <tr>
@@ -12,6 +41,7 @@
             <th scope="col">Отчество</th>
             <th scope="col">Телефон</th>
             <th scope="col">Почта</th>
+            <th scope="col">Отдел</th>
             <th scope="col">Возраст</th>
             <th scope="col" class="text-right">
                 <button class="btn btn-primary" (click)="onAddProfile()">Добавить пользователя</button>
@@ -19,13 +49,18 @@
           </tr>
         </thead>
         <tbody>
-          <tr >
+          <tr *ngFor="let user of users | sortBy: sortType | userfilter: searchStr">
             <th scope="row">{{ user.id }}</th>
             <td> {{ user.name }} </td>
             <td> {{ user.surname }} </td>
             <td> {{ user.patronymic }} </td>
             <td> {{ user.phone }} </td>
             <td> {{ user.email }} </td>
+            <td *ngIf="user.group == 1">IT отдел </td>
+            <td *ngIf="user.group == 2">Отдел продаж </td>
+            <td *ngIf="user.group == 3">Отдел доставки </td>
+            <td *ngIf="user.group == 4">Юридический отдел </td>
+
             <td>{{ getAge(user.date) }}</td>
 
             <td class="text-right">

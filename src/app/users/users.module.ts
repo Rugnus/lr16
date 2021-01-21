@@ -5,16 +5,18 @@ import { UsersRoutingModule } from './users-routing.module';
 import { UsersComponent } from './users.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserfilterPipe } from './pipes/userfilter.pipe';
+import { SortByPipe } from './pipes/sort-by.pipe';
 
 
 @NgModule({
-  declarations: [UsersComponent, UserListComponent, UserEditComponent, UserfilterPipe],
+  declarations: [UsersComponent, UserListComponent, UserEditComponent, UserfilterPipe, SortByPipe],
   imports: [
     CommonModule,
     UsersRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class UsersModule { }

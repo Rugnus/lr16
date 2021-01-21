@@ -4,7 +4,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Muser, MyGroups } from 'src/app/shared/models/muser.model';
 import { MuserService } from 'src/app/shared/services/muser.service';
 import { isNullOrUndefined } from 'util';
-import {GroupfilterPipe} from '../../shared/pipes/groupfilter.pipe'
+import {GroupfilterPipe} from '../../shared/pipes/groupfilter.pipe';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-user-list',
@@ -28,6 +30,29 @@ export class UserListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getData()
+  }
+
+  sortForm: FormGroup = new FormGroup({
+    sortType: new FormControl(1),
+  });
+  currentInstrument() {
+    let sortFor ;
+    this.sortType = this.sortForm.value.sortType
+    switch (this.sortType) {
+      case 'higherId':
+        sortFor = 'по возрастанию id';
+        break;
+      case 'lowerId':
+        sortFor = 'по убыванию id';
+        break;
+      case 'higherAge':
+        sortFor = 'по возрастанию возраста';
+        break;
+      case 'lowerAge':
+        sortFor = 'по убыванию возраста';
+        break;
+    }
+    return sortFor;
   }
 
   getAge(date: string) {
